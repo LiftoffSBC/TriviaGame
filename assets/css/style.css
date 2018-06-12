@@ -1,6 +1,8 @@
+
+
 .jumbotron {
     box-sizing: border-box;
-    height: 600px;
+    height: 800px;
     background-color: rgba(46, 250, 240, 0);
   }
   
@@ -47,4 +49,6 @@
   body {
     background-color: rgb(8, 124, 231);
     color: white;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
   }
