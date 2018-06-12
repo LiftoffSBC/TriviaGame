@@ -21,7 +21,7 @@ $(document).ready(function() {
     $("body").on("click", ".answer", function(event){
         //if answer
         selectedAnswer = $(this).text();
-        if(selectedAnswer === correctAnswers[questionCounter]) {
+        if(selectedAnswer === rightAnswers[questionCounter]) {
             //right
     
             clearInterval(theClock);
@@ -42,21 +42,21 @@ $(document).ready(function() {
     
     function generateLossDueToTimeOut() {
         unansweredTally++;
-        gameHTML = "<p class='text-center timer-p'>Time Remaining: <span class='timer'>" + counter + "</span></p>" + "<p class='text-center'>You ran out of time!  The correct answer was: " + correctAnswers[questionCounter] + "</p>" + "<img class='center-block img-wrong' src='assets/images/wrong.jpeg'>";
+        gameHTML = "<p class='text-center timer-p'>Time Remaining: <span class='timer'>" + counter + "</span></p>" + "<p class='text-center'>Out of time!  The right answer was: " + rightAnswers[questionCounter] + "</p>" + "<img class='center-block img-wrong' src='assets/images/wrong.jpeg'>";
         $(".mainArea").html(gameHTML);
         setTimeout(wait, 4000);  
     }
     
     function generateWin() {
-        correctTally++;
-        gameHTML = "<p class='text-center timer-p'>Time Remaining: <span class='timer'>" + counter + "</span></p>" + "<p class='text-center'>Correct! The answer is: " + correctAnswers[questionCounter] + "</p>" + imageArray[questionCounter];
+        rightTally++;
+        gameHTML = "<p class='text-center timer-p'>Time Remaining: <span class='timer'>" + counter + "</span></p>" + "<p class='text-center'>Right! The answer is: " + rightAnswers[questionCounter] + "</p>" + imageArray[questionCounter];
         $(".mainArea").html(gameHTML);
         setTimeout(wait, 4000);  
     }
     
     function generateLoss() {
-        incorrectTally++;
-        gameHTML = "<p class='text-center timer-p'>Time Remaining: <span class='timer'>" + counter + "</span></p>" + "<p class='text-center'>Wrong! The correct answer is: "+ correctAnswers[questionCounter] + "</p>" + "<img class='center-block img-wrong' src='assets/images/wrong.jpeg'>";
+        wrongTally++;
+        gameHTML = "<p class='text-center timer-p'>Time Remaining: <span class='timer'>" + counter + "</span></p>" + "<p class='text-center'>Wrong! The right answer is: "+ rightAnswers[questionCounter] + "</p>" + "<img class='center-block img-wrong' src='assets/images/wrong.jpeg'>";
         $(".mainArea").html(gameHTML);
         setTimeout(wait, 4000); 
     }
@@ -93,14 +93,14 @@ $(document).ready(function() {
     }
     
     function finalScreen() {
-        gameHTML = "<p class='text-center timer-p'>Time Remaining: <span class='timer'>" + counter + "</span></p>" + "<p class='text-center'>Here's Your Score!" + "</p>" + "<p class='summary-correct'>Correct: " + correctTally + "</p>" + "<p>Incorrect: " + incorrectTally + "</p>" + "<p>Unanswered: " + unansweredTally + "</p>" + "<p class='text-center reset-button-container'><a class='btn btn-primary btn-lg btn-block reset-button' href='#' role='button'>Reset Cigar Trivia!</a></p>";
+        gameHTML = "<p class='text-center timer-p'>Time Remaining: <span class='timer'>" + counter + "</span></p>" + "<p class='text-center'>Here's Your Score!" + "</p>" + "<p class='summary-correct'>Right: " + rightTally + "</p>" + "<p>Wrong: " + wrongTally + "</p>" + "<p>Unanswered: " + unansweredTally + "</p>" + "<p class='text-center reset-button-container'><a class='btn btn-primary btn-lg btn-block reset-button' href='#' role='button'>Reset Cigar Trivia!</a></p>";
         $(".mainArea").html(gameHTML);
     }
     
     function resetGame() {
         questionCounter = 0;
-        correctTally = 0;
-        incorrectTally = 0;
+        rightTally = 0;
+        wrongTally = 0;
         unansweredTally = 0;
         counter = 30;
         generateHTML();
@@ -113,11 +113,11 @@ $(document).ready(function() {
     var questionArray = ["Which is the darkest color cigar wrapper", "What are the three parts of a hand-rolled cigar?", "What is the name of the tobacco grown in the United States that is most often used for high quality cigar wrappers?", "What is the finding of the Surgeon General of the United States concerning cigars?", "Cigars are categorized by their length and what other measurement?", "Which is not the name of a size/style of cigar?", "What are the optimum conditions to store a cigar?", "Which Florida city was often called the cigar capital of the U.S.A.?"];
     var answerArray = [["Maduro","Oscuro","Claro","Colorado"], ["label, cover, center","wrapper, binder, filler","wrapper, leaf, label","wrapper. filler, label"], ["Cuban Seed", "Tampa", "Connecticut Shade", "Colorado Red"], ["Cigars are a safe alternative to cigarettes.","Cigars are safe as long you you do not inhale.","Cigars are not a safe alternative to cigarettes.","Cigars are unsafe but secondhand cigar smoke is safe."], ["circumference","weight","balance point","ring size"], ["pyromado","figurado","robusto","lonsdale"], ["70 degrees F and 90% humidity","65 degrees F and 70% humidity","40 degrees F and 90% humidity","80 degrees F and 20% humidity"], ["Orlando","Pensacola","St. Augustine","Tampa"]];
     var imageArray = ["<img class='center-block img-right' src='assets/images/maduro.jpg'>", "<img class='center-block img-right' src='assets/images/binder.jpg'>", "<img class='center-block img-right' src='assets/images/connecticut.jpeg'>", "<img class='center-block img-right' src='assets/images/sgw.png'>", "<img class='center-block img-right' src='assets/images/ring.jpeg'>", "<img class='center-block img-right' src='assets/images/size.png'>", "<img class='center-block img-right' src='assets/images/store.jpeg'>", "<img class='center-block img-right' src='assets/images/tampa.jpeg'>"];
-    var correctAnswers = ["A. Maduro", "B. wrapper, binder, filler", "C. Connecticut Shade", "C. Cigars are not a safe alternative to cigarettes.", "D. ring size", "A. pyromado", "B. 65 degrees F and 70% humidity", "D. Tampa"];
+    var rightAnswers = ["A. Maduro", "B. wrapper, binder, filler", "C. Connecticut Shade", "C. Cigars are not a safe alternative to cigarettes.", "D. ring size", "A. pyromado", "B. 65 degrees F and 70% humidity", "D. Tampa"];
     var questionCounter = 0;
     var selecterAnswer;
     var theClock;
-    var correctTally = 0;
-    var incorrectTally = 0;
+    var rightTally = 0;
+    var wrongTally = 0;
     var unansweredTally = 0;
     
