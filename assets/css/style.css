@@ -1,5 +1,3 @@
-
-
 .jumbotron {
     box-sizing: border-box;
     height: 800px;
@@ -47,8 +45,12 @@
   }
   
   body {
-    background-color: rgb(8, 124, 231);
     color: white;
     font-family: 'Courier New', Courier, monospace;
     font-weight: bold;
+    background: url("../images/smoke.jpg");
+  }
+
+  #question {
+background-color: rgba(250, 235, 215, 0.24) 
   }
